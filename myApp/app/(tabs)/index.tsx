@@ -1,28 +1,38 @@
-// app/index.tsx
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>🏠 Home Control</Text>
+      <Text style={styles.title}>🏠 Smart Home Dashboard</Text>
 
       <View style={styles.buttonContainer}>
+      <Link href="/(tabs)/energy" asChild>
+          <TouchableOpacity style={styles.card}>
+            <MaterialCommunityIcons name="flash" size={32} color="#FFD93D" />
+            <Text style={styles.cardText}>Energy Usage</Text>
+          </TouchableOpacity>
+        </Link>
+
         <Link href="/(tabs)/temperature" asChild>
-          <TouchableOpacity style={styles.box}>
-            <Text style={styles.boxText}>🌡️ Temperature</Text>
+          <TouchableOpacity style={styles.card}>
+            <MaterialCommunityIcons name="thermometer" size={32} color="#FF6B6B" />
+            <Text style={styles.cardText}>Temperature</Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/(tabs)/security" asChild>
-          <TouchableOpacity style={styles.box}>
-            <Text style={styles.boxText}>🔐 Security</Text>
+          <TouchableOpacity style={styles.card}>
+            <MaterialCommunityIcons name="lock" size={32} color="#4ECDC4" />
+            <Text style={styles.cardText}>Security</Text>
           </TouchableOpacity>
         </Link>
 
         <Link href="/(tabs)/lights" asChild>
-          <TouchableOpacity style={styles.box}>
-            <Text style={styles.boxText}>💡 Lights</Text>
+          <TouchableOpacity style={styles.card}>
+            <MaterialCommunityIcons name="lightbulb-on" size={32} color="#FFD93D" />
+            <Text style={styles.cardText}>Lights</Text>
           </TouchableOpacity>
         </Link>
       </View>
@@ -33,29 +43,37 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-    padding: 20,
-    justifyContent: 'space-between',
+    backgroundColor: '#FAFAFA',
+    paddingHorizontal: 20,
+    paddingTop: 60,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginTop: 50,
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#212529',
     textAlign: 'center',
+    marginBottom: 30,
   },
   buttonContainer: {
-    marginBottom: 40,
+    flex: 1,
+    justifyContent: 'center',
+    gap: 20,
   },
-  box: {
-    backgroundColor: '#ccc',
-    paddingVertical: 20,
-    borderRadius: 12,
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
+    paddingVertical: 25,
     alignItems: 'center',
-    marginBottom: 20,
+    elevation: 2, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  boxText: {
-    fontSize: 20,
-    color: '#000',
+  cardText: {
+    fontSize: 18,
     fontWeight: '600',
+    color: '#333333',
+    marginTop: 10,
   },
 });

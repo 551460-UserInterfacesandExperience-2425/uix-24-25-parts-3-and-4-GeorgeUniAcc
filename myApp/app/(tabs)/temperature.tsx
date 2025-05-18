@@ -8,7 +8,7 @@ const rooms = ['Living Room', 'Bedroom', 'Kitchen', 'Bathroom'];
 export default function TemperatureScreen() {
   const [temperatures, setTemperatures] = useState(
     rooms.reduce((acc, room) => {
-      acc[room] = 22; // default 22°C
+      acc[room] = 22; 
       return acc;
     }, {} as Record<string, number>)
   );
@@ -28,18 +28,16 @@ export default function TemperatureScreen() {
         <View key={room} style={styles.roomCard}>
           <Text style={styles.roomName}>{room}</Text>
 
-          {/* Circular Progress Indicator */}
           <Circle
             size={150}
-            progress={(temperatures[room] - 10) / 25} // Map temperature to progress (0 to 1)
-            color="#00f"
-            unfilledColor="#ccc"
+            progress={(temperatures[room] - 10) / 25} 
+            color="#70a1ff"
+            unfilledColor="#dcdcdc"
             thickness={8}
             showsText={true}
-            formatText={() => `${temperatures[room]}°C`} // Show temperature inside circle
+            formatText={() => `${temperatures[room]}°C`}
           />
 
-          {/* Temperature Control Slider */}
           <Slider
             style={styles.slider}
             minimumValue={10}
@@ -47,9 +45,9 @@ export default function TemperatureScreen() {
             step={1}
             value={temperatures[room]}
             onValueChange={(value) => handleTempChange(room, value)}
-            minimumTrackTintColor="#00f"
-            maximumTrackTintColor="#f00"
-            thumbTintColor="#00f"
+            minimumTrackTintColor="#70a1ff"
+            maximumTrackTintColor="#dcdcdc"
+            thumbTintColor="#70a1ff"
           />
         </View>
       ))}
@@ -61,24 +59,32 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     alignItems: 'center',
+    backgroundColor: '#f4f6f9',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: '#333',
   },
   roomCard: {
     alignItems: 'center',
     marginVertical: 20,
-    backgroundColor: '#eee',
+    backgroundColor: '#ffffff',
     padding: 20,
     borderRadius: 12,
     width: '100%',
+    elevation: 3,
+    shadowColor: '#aaa',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
   },
   roomName: {
     fontSize: 18,
     fontWeight: '600',
     marginBottom: 10,
+    color: '#333',
   },
   slider: {
     width: '100%',
